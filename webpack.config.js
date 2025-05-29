@@ -1,8 +1,12 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 const isDevelopment = process.env.NODE_ENV !== "production";
+
+console.log("NODE_ENV =", process.env.NODE_ENV);
+console.log("isDevelopment =", isDevelopment);
 
 module.exports = {
   mode: isDevelopment ? "development" : "production",
@@ -26,7 +30,7 @@ module.exports = {
     static: path.resolve(__dirname, "dist"),
     hot: true,
     open: true,
-    port: 30001,
+    port: 4000, // changed port to avoid conflict
   },
 
   module: {
@@ -63,5 +67,10 @@ module.exports = {
       template: "public/index.html",
     }),
     isDevelopment && new ReactRefreshWebpackPlugin(),
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify(
+        isDevelopment ? "development" : "production"
+      ),
+    }),
   ].filter(Boolean),
 };
