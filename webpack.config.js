@@ -30,7 +30,7 @@ module.exports = {
     static: path.resolve(__dirname, "dist"),
     hot: true,
     open: true,
-    port: 4000, // changed port to avoid conflict
+    port: 4000,
   },
 
   module: {
