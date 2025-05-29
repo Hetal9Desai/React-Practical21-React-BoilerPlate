@@ -6,3 +6,6 @@
   Using CSS
   Hot module reloading
   Generating a proper build
+
+## Deploy Link:
+https://gleaming-praline-5767f2.netlify.app/
